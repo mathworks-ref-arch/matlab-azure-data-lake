@@ -1094,9 +1094,9 @@
 
 
 ```
-### functions/azRoot.m
+### functions/azDLRoot.m
 ```notalanguage
-  AZROOT Helper function to locate the Azure tooling.
+  AZDLROOT Helper function to locate the Azure Data Lake interface
  
   Locate the installation of the Azure tooling to allow easier construction
   of absolute paths to the required dependencies.

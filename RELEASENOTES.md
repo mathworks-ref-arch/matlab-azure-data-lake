@@ -1,6 +1,13 @@
 # MATLAB Interface *for Azure Data Lake*
 # Release Notes
 
+## Release 0.6.1 5th November 2019
+* Renamed azRoot function to distinguish from other Azure interfaces
+* Added Security notice
+* Added Proxy support
+* Updated Data Lake SDK to version 2.3.4
+* Added a log4j.properties configuration file
+
 ## Release 0.6.0 February 18th 2019
 * Documentation improvements
 * Changed License agreement

@@ -55,6 +55,7 @@ Messages logged to the console with a level of warning are displayed as if they 
 
 For full details see: [Logger.m](../Software/MATLAB/app/functions/Logger.m).
 
+## Azure SDK logging
+The underlying Azure SDK uses log4j. The logging properties of the SDK can be controlled using a properties file: ```Software/MATLAB/lib/jar/log4j.properties```. This defaults to logging to the console at level ```INFO```. Changes to this file take effect when the client is initialized.
 
-----------------
-[//]: #  (Copyright 2017 The MathWorks, Inc.)
+[//]: #  (Copyright 2017-2019 The MathWorks, Inc.)

@@ -118,6 +118,8 @@ dlClient = azure.datalake.store.ADLStoreClient;
 dlClient.ConfigFile = '/home/username/myconfigfile.json'
 dlClient.initialize;
 ```
+### Using a network proxy
+If a proxy is configured in the Web section of the MATLAB Preferences dialog then those values will be set for the JVM and thus the underlying Data Lake SDK calls when ```dlClient.initialize;``` is called. The proxy will be used for both http and https traffic.
 
 ## Notes    
 

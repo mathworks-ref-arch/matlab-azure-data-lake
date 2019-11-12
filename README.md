@@ -8,9 +8,9 @@ This is a MATLAB® interface that connects to the Azure™ Data Lake™ Storage 
 
 ### 3rd party products
 To build a required JAR file:
-* Maven
+* Maven™
 * JDK 8
-* Microsoft® Azure Data Lake Storage SDK for Java
+* Microsoft® Azure Data Lake Storage SDK for Java®
 
 ## Getting Started
 The following assumes the following steps described in [Getting Started](Documentation/GettingStarted.md) have been completed:

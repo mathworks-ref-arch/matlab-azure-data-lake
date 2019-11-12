@@ -102,7 +102,7 @@ This gives a further clue as to what the underlying problem may be.
 ## References
 [1. Data Lake store end user authenticate using Active Directory](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-end-user-authenticate-using-active-directory)
 
-
+[2. Azure Data Lake Storage Gen1 Java API docs](https://azure.github.io/azure-data-lake-store-java/javadoc/)
 
 ----------------
 [//]: #  (Copyright 2017 The MathWorks, Inc.)

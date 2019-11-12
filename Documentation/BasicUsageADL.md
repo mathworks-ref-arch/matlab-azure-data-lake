@@ -1,7 +1,7 @@
 # Azure Data Lake Basic Usage
 
 ## First steps
-The following sections assumes the followsing steps described in [Getting Started](GettingStarted.md) have been completed:
+This document assumes the following steps described in [Getting Started](GettingStarted.md) have been completed:
 
 * Configured Active Directory
 * Configured a Data Lake Store
@@ -10,7 +10,7 @@ The following sections assumes the followsing steps described in [Getting Starte
 
 Not all of the operations supported by the Interface are described here. For further documentation refer to the help for the individual commands or the [API reference](AzureDataLakeApi.md) document.
 
-By and large the Data Lake API wraps the HDFS API and thus functionality normally available in that API is available through the MATLAB client.
+By and large the Azure Data Lake API wraps the HDFS API and thus a subset of functionality normally available in that API is available through the MATLAB client.
 
 See [Logging](Logging.md) for details of enabling verbose output during development and testing.
 

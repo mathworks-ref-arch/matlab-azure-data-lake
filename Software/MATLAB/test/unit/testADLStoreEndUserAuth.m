@@ -14,7 +14,7 @@ classdef testADLStoreEndUserAuth < matlab.unittest.TestCase
     %
     % Notes:
 
-    % Copyright 2017 The MathWorks, Inc.
+    % Copyright 2017-2019 The MathWorks, Inc.
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %% Please add your test cases below
@@ -27,11 +27,12 @@ classdef testADLStoreEndUserAuth < matlab.unittest.TestCase
         function testSetup(testCase)
             testCase.logObj = Logger.getLogger();
             testCase.logObj.DisplayLevel = 'verbose';
-            % TODO add gitlab-runner config directory to path if moving into unit test
-            % handle file
-            standardCredsFile = which('azuredatalakestore.json');
-            enduserCredsFile = which('azuredatalakestore.json_enduser');
-            copyfile(enduserCredsFile,standardCredsFile);
+
+            % Configure a license file for end user auth
+            customCredsFile = which('azuredatalakestore.json_enduser');
+            [filepath,name,~] = fileparts(customCredsFile);
+            standardCredsFile = fullfile(filepath, [name, '.json']);
+            copyfile(customCredsFile, standardCredsFile);
 
             % recover from a bad cleanup
             % disp('Running testSetup');
@@ -57,12 +58,6 @@ classdef testADLStoreEndUserAuth < matlab.unittest.TestCase
 
     methods (TestMethodTeardown)
         function testTearDown(testCase)
-            % TODO add gitlab-runner config directory to path if moving into unit test
-            % handle file
-            standardCredsFile = which('azuredatalakestore.json');
-            servicetoserviceCredsFile = which('azuredatalakestore.json_servicetoservice');
-            copyfile(servicetoserviceCredsFile,standardCredsFile);
-
             % recover from a bad cleanup
             % disp('Running testTearDown');
             dlClient = azure.datalake.store.ADLStoreClient;
@@ -135,7 +130,7 @@ classdef testADLStoreEndUserAuth < matlab.unittest.TestCase
         function testInitNamedConfig(testCase)
             disp('Running testInitNamedConfig');
             dlClient = azure.datalake.store.ADLStoreClient;
-            testCredsFile = which('azuredatalakestore-enduser.json');
+            testCredsFile = which('azuredatalakestore.json_enduser');
             dlClient.ConfigFile = testCredsFile;
 
             dlClient.initialize();

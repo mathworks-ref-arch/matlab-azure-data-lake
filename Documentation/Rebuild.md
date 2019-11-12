@@ -2,7 +2,7 @@
 
 The jar files required by this package can be downloaded and built as follows. The package's *pom.xml* file can be found in: */Azure-Data-Lake-Storage/Software/Java*.
 
-Use the following commands or OS specific equivalents to do a maven build of the package's jar file. If not already installed first install Maven.
+Use the following commands or OS specific equivalents to do a [Maven™](https://maven.apache.org/) build of the package's jar file. If not already installed first install Maven. Maven requires that a JDK (Java® 8 or later) is installed and that the *JAVA_HOME* environment variable is set to the location of the JDK. On Windows® the *MAVEN_HOME* environment variable should also be set. Consult the Maven documentation for further details.
 ```
 $ cd Azure-Data-Lake-Storage/Software/Java
 $ mvn clean verify package

@@ -34,6 +34,17 @@ classdef ADLStoreClient < azure.object
             if verLessThan('matlab','9.2') % R2017a
                 write(logObj,'error','MATLAB Release 2017a or newer is required');
             end
+
+            % Configure log4j if a properties file exists
+            % start in <package directory>/matlab-azure-data-lake-storage/Software/MATLAB/app/system/+azure/+datalake/+store/@ADLStoreClient/
+            % and move up to <package directory>/matlab-azure-data-lake-storage/Software/MATLAB
+            basePath = fileparts(fileparts(fileparts(fileparts(fileparts(fileparts(fileparts(mfilename('fullpath'))))))));
+            % append the properties file location and configure it
+            log4jPropertiesPath = fullfile(basePath, 'lib', 'jar', 'log4j.properties');
+            if exist(log4jPropertiesPath, 'file') == 2
+                org.apache.log4j.PropertyConfigurator.configure(log4jPropertiesPath);
+            end
+
         end
     end
 

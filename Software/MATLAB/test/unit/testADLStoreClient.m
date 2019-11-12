@@ -14,8 +14,7 @@ classdef testADLStoreClient < matlab.unittest.TestCase
     %
     % Notes:
 
-    % Auth/Revision:  Michael Browne
-    % Copyright 2017 The MathWorks, Inc.
+    % Copyright 2017-2019 The MathWorks, Inc.
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %% Please add your test cases below
@@ -28,6 +27,12 @@ classdef testADLStoreClient < matlab.unittest.TestCase
         function testSetup(testCase)
             testCase.logObj = Logger.getLogger();
             testCase.logObj.DisplayLevel = 'verbose';
+
+            % Configure a license file for service to service auth
+            customCredsFile = which('azuredatalakestore.json_servicetoservice');
+            [filepath,name,~] = fileparts(customCredsFile);
+            standardCredsFile = fullfile(filepath, [name, '.json']);
+            copyfile(customCredsFile, standardCredsFile);
 
             % recover from a bad cleanup
             % disp('Running testSetup');
@@ -512,6 +517,10 @@ classdef testADLStoreClient < matlab.unittest.TestCase
             dlClient = azure.datalake.store.ADLStoreClient;
             dlClient.initialize();
             fileName1 = 'myTmpADLUnitTestFileName1.tmp';
+            if dlClient.checkExists(fileName1)
+                tf = dlClient.delete(fileName1);
+                testCase.verifyTrue(tf);
+            end
             dlClient.createEmptyFile(fileName1);
             expOpt = azure.datalake.store.ExpiryOption.RELATIVETONOW;
             rep = azure.datalake.store.UserGroupRepresentation.UPN;
@@ -523,7 +532,16 @@ classdef testADLStoreClient < matlab.unittest.TestCase
             timeDelta = seconds(timeNew - nowIsh);
             % Fail if more than a 24 hour + 5 second delta between the time
             % just set and returned expiry time
+            disp(dirTable);
+            disp('timeNew');
+            disp(timeNew);
+            disp('nowIsh');
+            disp(nowIsh);
+            disp('timeDelta');
+            disp(timeDelta);
             testCase.verifyLessThan(timeDelta,5+24*60*60);
+            tf = dlClient.delete(fileName1);
+            testCase.verifyTrue(tf);
             dlClient.delete();
         end
 

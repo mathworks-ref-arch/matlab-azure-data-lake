@@ -55,7 +55,7 @@ disp('Running post setup operations');
 
 % Setup Java dynamic path
 % Locate the Azure libraries
-libDir = fullfile(azRoot,'lib','jar');
+libDir = fullfile(azDLRoot,'lib','jar');
 jarFiles = dir(fullfile(libDir,'azure-dl-sdk-0.1.0.jar'));
 
 % Loop and add to the dynamic classpath

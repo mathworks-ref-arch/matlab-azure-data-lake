@@ -38,12 +38,6 @@ import com.microsoft.azure.datalake.store.ADLException;
 import com.microsoft.azure.datalake.store.DirectoryEntry;
 import com.microsoft.azure.datalake.store.IfExists;
 
-% TODO resolve log4j logging issue with Microsoft SDK
-%import org.apache.log4j.BasicConfigurator;
-%import org.apache.log4j.Logger;
-% Turn on log4j for the Azure SDK & make this coexist with the ML logger in
-% due course if useful, see BasicConfigurator.configure();
-
 % Create a logger object
 logObj = Logger.getLogger();
 
@@ -109,6 +103,31 @@ end
 if isempty(obj.AccountFQDN)
     write(logObj,'error','AccountFQDN is not specified as a Client property or via a configuration file');
 end
+
+%% configure a proxy if set in MATLAB web preferences
+proxyHost = java.lang.System.getProperty('tmw.proxyHost');
+if ~isempty(proxyHost)
+    % configure the same value for http and https traffic
+    java.lang.System.setProperty('https.proxyHost', proxyHost);
+    java.lang.System.setProperty('http.proxyHost', proxyHost);
+end
+
+proxyPort = java.lang.System.getProperty('tmw.proxyPort');
+if ~isempty(proxyHost)
+    java.lang.System.setProperty('https.proxyPort', proxyPort);
+    java.lang.System.setProperty('http.proxyPort', proxyPort);
+end
+
+proxyUser = java.lang.System.getProperty('tmw.proxyUsername');
+if ~isempty(proxyUser)
+    java.lang.System.setProperty('https.proxyUser', proxyUser);
+end
+
+proxyPassword = java.lang.System.getProperty('tmw.proxyPassword');
+if ~isempty(proxyPassword)
+    java.lang.System.setProperty('https.proxyPassword', proxyPassword);
+end
+
 
 %% create the provider
 if obj.AuthOption == azure.datalake.store.AuthenticationOption.SERVICETOSERVICE
