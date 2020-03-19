@@ -1,6 +1,10 @@
 # MATLAB Interface *for Azure Data Lake*
 # Release Notes
 
+## Release 0.6.2 5th March 2020
+* Updated security notice
+* Updated license
+
 ## Release 0.6.1 5th November 2019
 * Renamed azRoot function to distinguish from other Azure interfaces
 * Added Security notice

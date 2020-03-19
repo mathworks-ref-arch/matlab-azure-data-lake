@@ -1,5 +1,5 @@
 {
-             "ClientId": "daeafd5d-af05-4d5b-bb40-eff4c6d9599f",
+             "ClientId": "daea<REDACTED>99f",
     "AuthTokenEndpoint": "https://login.microsoftonline.com/2eb94<REDACTED>82feb2/oauth2/token",
             "ClientKey": "g37FjhJ<REDACTED>85CmpI=",
           "AccountFQDN": "mydltest.azuredatalakestore.net"
