@@ -2,6 +2,9 @@
 
 This is a MATLAB® interface that connects to the Azure™ Data Lake™ Storage service.
 
+**This package has been deprecated, please use the following package instead: [https://github.com/mathworks-ref-arch/matlab-azure-services](https://github.com/mathworks-ref-arch/matlab-azure-services)
+This package may be removed in the future.**
+
 ## Requirements
 ### MathWorks products
 * Requires MATLAB R2017a or later
