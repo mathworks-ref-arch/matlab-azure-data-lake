@@ -73,7 +73,7 @@ dlClient.delete;
 
 ## Supported Products
 
-MathWorks Products (http://www.mathworks.com)
+MathWorks Products (https://www.mathworks.com)
 1.  MATLAB (R2017a or later)
 2.  MATLAB Compiler and Compiler SDK (R2017a or later)
 3.  MATLAB Production Server (R2017a or later)
